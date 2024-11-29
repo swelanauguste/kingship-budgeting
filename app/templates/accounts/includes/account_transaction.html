@@ -1,0 +1,12 @@
+<div
+    class="account-transaction d-flex justify-content-end align-items-center border border-dark border-3 pt-1 px-3 rounded-4 text-bg-dark">
+    <a class="text-white mx-2"
+        href="{% url 'account-list' %}">
+        <span class="material-symbols-outlined fs-1">
+            receipt_long
+        </span>
+    </a>
+    {% include 'accounts/includes/offcanvas_add_account_form.html' %}
+
+
+</div>

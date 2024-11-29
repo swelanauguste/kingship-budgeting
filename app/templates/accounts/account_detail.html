@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+
+{% block head_title %}
+{{account.name}} -
+{% endblock head_title %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+<!-- HEADER -->
+
+<div class="py-5 my-5">
+    <div class="d-flex justify-content-between align-items-center">
+        <a class="text-decoration-none text-dark" href="{% url 'account-update' account.slug %}">
+            <p class="text-center display-4 fw-bold">{{account.name}}
+            </p>
+        </a>
+
+
+        <p class="text-end fs-1">
+            ${{account.amount|floatformat:2|intcomma}}</p>
+    </div>
+    <hr>
+
+    <p class=" ">{{account.description}}</p>
+
+</div>
+
+{% include 'accounts/includes/account_transaction.html' %}
+
+<!-- FOOTER -->
+
+
+{% endif %}
+
+{% endblock content %}

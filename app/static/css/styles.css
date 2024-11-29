@@ -1,0 +1,14 @@
+html, body{
+    font-family: "Montserrat", system-ui;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.material-symbols-outlined{
+    font-size: 40px!important;
+}
+
+.account-transaction {
+    position: fixed; 
+    bottom: 9vh; right: 4vw;
+}

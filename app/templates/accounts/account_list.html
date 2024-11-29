@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="container">
+
+    <div class="py-5 my-5">
+
+        {% if accounts %}
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            {% for account in accounts %}
+            <a class="text-decoration-none"
+                href="{% url 'account-detail' account.slug %}">
+                <div class="col">
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <h5 class="card-title text-end">
+                                <div
+                                    class="d-flex justify-content-between align-items-center">
+                                    <span> {{account.name|upper}}</span>
+                                    <span>
+                                        ${{account.amount|floatformat:2|intcomma}}</span>
+                                </div>
+                            </h5>
+                            <hr>
+                            <p class="text-muted small">{{account.description}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            {% endfor %}
+
+        </div>
+        {% else %}
+        <p class="text-center text-muted">No accounts yet</p>
+        <hr>
+        <p>
+            {% include 'accounts/includes/offcanvas_add_account_form.html' %}
+
+        </p>
+        {% endif %}
+
+    </div>
+
+</div>
+{% endif %}
+
+{% endblock content %}

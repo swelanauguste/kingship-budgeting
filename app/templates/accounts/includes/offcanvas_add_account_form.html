@@ -1,0 +1,38 @@
+{% load crispy_forms_tags %}
+
+
+<a class="text-white"
+    href="#offcanvasBottomAddIncome">
+    <span class="material-symbols-outlined fs-1"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasBottomAddIncome"
+        aria-controls="offcanvasBottomAddIncome">
+        add_circle
+    </span>
+</a>
+
+<div class="offcanvas offcanvas-bottom col-lg-3 mx-lg-auto mx-3 rounded-top-4"
+    style="height: 60vh;"
+    tabindex="-1"
+    id="offcanvasBottomAddIncome"
+    aria-labelledby="offcanvasBottomAddIncomeLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title"
+            id="offcanvasBottomAddIncomeLabel">Add income</h5>
+        <button type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body small p-3">
+        <form action="{% url 'account-create' %}"
+            method="post">
+            {% csrf_token %}
+            {{ add_account_form|crispy }}
+            <br>
+            <div class="d-grid">
+                <button class="btn btn-lg btn-dark rounded-4" type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+</div>

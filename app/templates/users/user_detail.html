@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="my-5 py-5">
+    <h1 class="fw-bold text-center">{{user}}</h1>
+    <hr>
+    <div class="col-lg-4 mx-auto">
+
+        <p class="text-end"><a class="text-dark"
+                href="{% url 'user-update' %}"><span
+                    class="material-symbols-outlined">
+                    edit
+                </span></a></p>
+
+        <p><strong>Role: </strong>{{user.role|title}}</p>
+        <p><strong>Phone: </strong><a href="tel:{{user.phone}}">
+                {{user.phone}}</a></p>
+        <p><strong>e-mail: </strong><a
+                href="mailto:{{user.email}}">{{user.email}}</a></p>
+        <p><strong>Username: </strong>{{user.username}}
+        </p>
+        <br>
+        <p class="text-end"><a class="text-dark"
+                href="{% url 'change-password' %}">Change
+                password</a></p>
+        <br><br><br>
+        <hr>
+        <p class="text-end"> <a class="text-dark"
+                href="{% url 'logout' %}"><span
+                    class="material-symbols-outlined">
+                    logout
+                </span></a></p>
+    </div>
+</div>
+{% endblock content %}
